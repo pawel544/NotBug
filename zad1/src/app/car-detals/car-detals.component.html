@@ -1,0 +1,11 @@
+<p>car-detals works!</p>
+<div *ngIf="car">
+<h2>Szczegóły samochodu:{{ car?.name }}</h2>
+<p> Marka: {{car?.brand}}</p>
+<h3>Usługi:</h3>
+<ul>
+    <li *ngFor=" let service of car.service">
+        {{service.party}} - {{service.cost}}PLN
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,12 @@
+<p>add-car works!</p>
+<div>
+    <h2> Dodaj Samochód</h2>
+    <input 
+        [(ngModel)]="name" 
+        placeholder="Wprowadź nazwę samochodu" 
+        required
+    >
+    <input [(ngModel)]="brand" 
+        placeholder="Dodaj marke">
+    <button (click)="addCar()">Dodaj samochód </button>
+</div>
