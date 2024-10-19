@@ -26,17 +26,17 @@ def create_post(request):
 def edit_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 
-    # Sprawdzenie, czy użytkownik jest autorem posta
+
     if post.author != request.user:
         messages.error(request, "Nie masz uprawnień do edytowania tego posta.")
-        return redirect(to='strona:index')  # lub inny widok
+        return redirect(to='strona:index')
 
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
             messages.success(request, "Post został pomyślnie zaktualizowany.")
-            return redirect(to='strona:index')  # Upewnij się, że ten widok istnieje
+            return redirect(to='strona:index')
     else:
         form = PostForm(instance=post)
 
