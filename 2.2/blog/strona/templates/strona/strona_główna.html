@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizer - Nowy Post</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+</head>
+<body>
+<main class="container">
+    <h1>Strona Głównat</h1>
+
+    <!-- Nawigacja -->
+    <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            <li><a href="user/logaut/" roole="button">wyloguj</a></li>
+            <li><a href="post/new/">Dodaj Post</a></li>
+            {% else %}
+                 <li><a href='user/login/' roole="button"> LOGIN</a></li>
+
+        <li><a href='user/signup/' roole="button">REGISTRATION</a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+
+
+</main>
+<ul>
+    {% for post in posts %}
+    <li>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p><strong>Autor:</strong> {{ post.author }}</p>
+        <p><strong>Data utworzenia:</strong> {{ post.created_at }}</p>
+        <p><strong>Data ostatniej edycji:</strong> {{ post.updated_at }}</p>
+        <li><a href="post/{{post.id}}/edit">Edytuj</a></li>
+    </li>
+    {% empty %}
+    <li>Brak postów do wyświetlenia.</li>
+    {% endfor %}
+
+
+</ul>
+</body>
+</html>
