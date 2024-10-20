@@ -1,0 +1,8 @@
+<p>pokemon-details works!</p>
+<div ngIf="pokemonDetails">
+<h2>{{pokemonDetails.name | titlecase}}</h2>
+<img [src]="pokemonDetails.sprites.front_default" alt="{{ pokemonDetails.names}}">
+<p> Height: {{pokemonDetails.height}} ></p>
+<p> Weight: {{pokemonDetails.weight }}</p>
+<p> Base Experience: {{pokemonDetails.base_experience}} </p>
+</div>
